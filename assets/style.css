@@ -1,0 +1,516 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #000;
+}
+
+html, body{
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* remove any stray borders/outlines that may appear as a gray line */
+nav, .main, .main .box{
+    border: none;
+}
+
+img{display:block;}
+
+.main {
+    background-image: url("img/bg.png");
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+.main .box {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.65) 60%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 0;
+}
+
+.main::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.6) 100%);
+    mix-blend-mode: multiply;
+    z-index: 0;
+}
+
+nav {
+    padding-top: 25px;
+    max-width: 80vw;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 62px;
+    opacity: 1;
+    position: relative;
+    z-index: 10;
+}
+
+nav img {
+    opacity: 0.85;
+}
+
+nav button {
+    position: relative;
+    z-index: 10;
+}
+
+.hero {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    text-align: center;
+    padding: 30vh 20px 0;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    max-width: 700px;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+}
+
+.hero .kicker {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+    max-width: 760px;
+    margin-bottom: 12px;
+}
+
+.hero .lead {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 760px;
+    margin-bottom: 18px;
+    margin-top: 18px;
+    opacity: 0.95;
+}
+
+.cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+}
+
+.email-input {
+    flex: 1 1 520px;
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-size: 18px;
+}
+
+.email-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.get-started {
+    background: #e50914;
+    color: #fff;
+    border: none;
+    padding: 14px 22px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Remove default focus rings that can show as thin gray lines */
+.email-input:focus,
+.get-started:focus,
+.flex button:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+/* duplicate email-input border removed */
+
+/* small nav button styling to match look */
+.flex button {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.flex button:last-child {
+    background: #e50914;
+    border: none;
+    padding: 8px 14px;
+}
+
+.separation{
+    width: 100%;
+    height: 11px;
+    background-color: rgb(58, 58, 58);
+    margin-top: 0;
+    clip-path: none;
+    border-radius: 0;
+    position: relative;
+    z-index: 0;
+}
+
+.content{
+    background-color: black;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    margin: auto;
+    z-index: 10;
+    max-width: 80vw;
+    padding: 24px 0;
+}
+
+.content h2 {
+    margin-bottom: 0;
+}
+
+.movies-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.movies {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.movies::-webkit-scrollbar {
+    display: none;
+}
+
+.movies img {
+    width: 220px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.movie-card {
+    position: relative;
+    flex: 0 0 240px;
+    padding-left: 20px;
+}
+
+.rank {
+    position: absolute;
+    left: -14px;
+    bottom: 8px;
+    z-index: 1;
+    color: #000;
+    font-size: 128px;
+    font-weight: 700;
+    line-height: 0.8;
+    -webkit-text-stroke: 2px #fff;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.8);
+}
+
+.movies-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 48px;
+    height: 96px;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 12px 0 0 12px;
+    background: rgba(35, 35, 35, 0.9);
+    color: #fff;
+    font-size: 48px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.movies-next:hover {
+    background: rgba(70, 70, 70, 0.95);
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.reason-card {
+    min-height: 250px;
+    padding: 32px 20px 24px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(150deg, #201d43 0%, #191225 75%, #160d18 100%);
+}
+
+.reason-card h3 {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.reason-card p {
+    color: #b8b5c4;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
+.reason-icon {
+    position: absolute;
+    right: 24px;
+    bottom: 18px;
+    color: #f36a9f;
+    font-size: 64px;
+    line-height: 1;
+    text-shadow: 0 0 12px rgba(236, 54, 156, 0.8);
+}
+
+.faq-section {
+    width: 100%;
+    margin-top: 56px;
+}
+
+.faq-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.faq-item {
+    background: #2d2d2d;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 96px;
+    padding: 24px 28px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.faq-icon {
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 180ms ease;
+}
+
+.faq-answer p {
+    overflow: hidden;
+    padding: 0 28px;
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.45;
+}
+
+.faq-answer.is-open {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer.is-open p {
+    padding-bottom: 28px;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.site-footer {
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 72px 0 80px;
+    color: #b8b5c4;
+}
+
+.footer-lead {
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+}
+
+.footer-cta {
+    display: flex;
+    gap: 10px;
+    max-width: 980px;
+    margin: 24px auto 108px;
+}
+
+.footer-cta input {
+    flex: 1;
+    min-width: 0;
+    padding: 18px 20px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: #111;
+    color: #fff;
+    font-size: 18px;
+}
+
+.footer-cta button {
+    padding: 0 28px;
+    border: 0;
+    border-radius: 4px;
+    background: #e50914;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.footer-cta button span {
+    margin-left: 18px;
+    font-size: 34px;
+    font-weight: 400;
+}
+
+.footer-contact {
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.site-footer a {
+    color: #b8b5c4;
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    height: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    align-items: start;
+}
+
+.footer-links div {
+    display: grid;
+    gap: 22px;
+}
+
+.language-button {
+    margin-top: 72px;
+    padding: 10px 16px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: #111;
+    color: #fff;
+    font-size: 16px;
+}
+
+.footer-country {
+    display: block;
+    clear: both;
+    margin: 56px 0 0;
+    color: #fff;
+    line-height: 1.5;
+}
+
+.recaptcha-note {
+    margin-top: 48px;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .faq-question {
+        min-height: 76px;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .faq-icon {
+        font-size: 36px;
+    }
+
+    .faq-answer p {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 900px) {
+    .reasons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .reasons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reason-card h3 {
+        font-size: 24px;
+    }
+
+    .footer-cta {
+        flex-direction: column;
+        margin-bottom: 72px;
+    }
+
+    .footer-cta button {
+        min-height: 56px;
+        font-size: 20px;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+    
